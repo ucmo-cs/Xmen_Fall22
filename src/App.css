@@ -19,6 +19,10 @@ body{
   justify-content: center;
 }
 
+#bod1{
+
+}
+
 .body1 {
   display:flex;
   align-items: center;
@@ -41,8 +45,7 @@ body{
 }
 
 .comment{
-  position: absolute; bottom: -15px;
-
+  position: relative; bottom: -5px;
 }
 
 #input{
@@ -51,7 +54,9 @@ body{
 }
 
 .btn1{
-  position: absolute; bottom: -90px;
+  position: relative; bottom: -35px;
+
+  float: left;
 
 }
 

@@ -16,7 +16,7 @@ function App() {
 
       </header>
 
-      <body>
+      <body id="bod1">
         <Buttons />
       </body>
 
