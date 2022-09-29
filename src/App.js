@@ -1,9 +1,7 @@
-import logo from './commerce_photo.jpg';
+import logo from './Photos/commerce_photo.jpg';
 import './App.css';
-import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
-import Buttons from './Buttons';
+import Buttons from './Components/Buttons';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
@@ -13,7 +11,6 @@ function App() {
       <header className="header">
         <img src={logo} alt="commerce_photo" width="650" height="241" />
         <h3 id="text1"> Please select the services we can help you with: </h3>
-
       </header>
 
       <body id="bod1">
@@ -21,13 +18,13 @@ function App() {
       </body>
 
       <div className="comment">
-      <textarea className="comment" id="input" placeholder="Please enter any additional information">
-
-      </textarea>
+      <textarea className="comment" id="input" placeholder="Please enter any additional information" />
       </div>
+
       <div className="btn1">
       <Button variant="primary">Continue</Button>
       </div>
+
     </div>
 
   );
