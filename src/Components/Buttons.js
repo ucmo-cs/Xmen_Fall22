@@ -13,8 +13,8 @@ const Buttons = () => {
     const [other, setother] = useState(false);
 
   return (
-    <div className="body1">
-      <div className="buttons1">
+    <div className="services-buttons-container">
+      <div className="services-buttons">
           <button onClick={() => setcheck(!check)} className={'toggle-btn ' + (check ? 'toggle-close':'')}>
           Checking Account
           </button>
@@ -26,7 +26,7 @@ const Buttons = () => {
           </button>
       </div>
 
-        <div className="buttons1">
+        <div className="services-buttons">
           <button onClick={() => setsave(!save)} className={'toggle-btn ' + (save ? 'toggle-close':'')}>
             Savings Account
           </button>
@@ -38,7 +38,7 @@ const Buttons = () => {
           </button>
         </div>
 
-      <div className="buttons1">
+      <div className="services-buttons">
         <button onClick={() => setinvest(!invest)} className={'toggle-btn ' + (invest ? 'toggle-close':'')}>
           Investment Account
         </button>
