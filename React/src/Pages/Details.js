@@ -8,7 +8,19 @@ function Details(){
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
-    const [address, setAddress] = useState('');
+    const [phone, setPhone] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const user = {firstName, lastName, email, phone}
+
+        fetch('http://localhost:8080/jpa/users', {
+            method: 'POST',
+            headers:{"Content-Type" : "application/json"},
+            body: JSON.stringify(user)
+        }).then(() => { console.log('new user added');
+        }).then(() => {routeChange()});
+    }
 
     let navigate = useNavigate();
     const routeChange = () =>{
@@ -31,14 +43,16 @@ function Details(){
                         <input className="details-textbox" type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
                     </label>
                     <label className="details-label">Phone Number <br />
-                        <input className="details-textbox" type="text" value={address} onChange={(e) => setAddress(e.target.value)}/>
+                        <input className="details-textbox" type="text" value={phone} onChange={(e) => setPhone(e.target.value)}/>
                     </label>
 
                     <Form.Check
                         type="switch"
+                        name="emailConsent"
                         className="details-switch"
                         id="details-switch1"
                         label="Email Consent"
+                        value="1"
                     />
 
                     <p className="details-switch-text">
@@ -47,16 +61,19 @@ function Details(){
 
                     <Form.Check
                         type="switch"
+                        name="textConsent"
                         className="details-switch"
                         id="details-switch2"
                         label="Text Message Consent"
+                        value="1"
                     />
                     <p className="details-switch-text">
                         <t />By checking, You are providing consent to receive text updates
                     </p>
+
                 </Form>
                 <div className="details-confirm">
-                    <Button variant="primary" onClick={routeChange}>Continue</Button>
+                    <Button variant="primary" onClick={handleSubmit}>Continue</Button>
                 </div>
             </div>
         </div>
