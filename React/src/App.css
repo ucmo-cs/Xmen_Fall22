@@ -146,3 +146,44 @@ color: white;
   position: relative; bottom: -20px;
   float: left;
 }
+
+.location-header {
+  display: flex;
+  justify-content: center;
+  font-family: 'Poppins';
+  font-weight: bolder;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.location-search{
+  display:flex;
+  justify-content: center;
+}
+
+.search-bar{
+  width:235px;
+  margin-right: 20px;
+}
+
+.search-button{
+  width: 85px;
+}
+
+.location-map{
+  margin-top: 35px;
+}
+
+.location-pick{
+  margin-top: 40px;
+  display: flex;
+
+}
+
+.appointments-text{
+  padding-top: 50px;
+}
+
+.button-select-location{
+  width: 150px;
+}

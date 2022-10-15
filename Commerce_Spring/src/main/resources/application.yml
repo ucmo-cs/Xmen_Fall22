@@ -14,10 +14,11 @@ spring:
 
     datasource:
       driver-class-name: org.h2.Driver
-      url: jdbc:h2:file:~test
+      url: jdbc:h2:file:~/test
       username: sa
       password:
 
     jpa:
       hibernate:
+        generate-ddl: true
         ddl-auto: create
