@@ -15,9 +15,9 @@ root.render(
        <Routes>
             <Route path="/" element={<App />} />
             <Route path="location" element={<Location />} />
-            <Route path="times" element={<Times />} />
-            <Route path="details" element={<Details />} />
-            <Route path="details/confirm" element={<Confirm />} />
+            <Route path="location/times" element={<Times />} />
+            <Route path="location/times/details" element={<Details />} />
+            <Route path="location/times/details/confirm" element={<Confirm />} />
        </Routes>
    </BrowserRouter>
   </React.StrictMode>

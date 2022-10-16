@@ -3,8 +3,16 @@ import SearchBox from "../Components/SearchBox";
 import Button from "react-bootstrap/Button";
 import map from "../Photos/Picture2.png";
 import Card from 'react-bootstrap/Card';
+import icon from "../Photos/LocationIcon.png";
+import { useNavigate } from "react-router-dom";
 
 function Location(){
+
+    let navigate = useNavigate();
+    const routeChange = () =>{
+        let path = `times`;
+        navigate(path);
+    }
 
     const [searchField, setSearch] = useState("");
 
@@ -20,20 +28,20 @@ function Location(){
                 <Card
                     bg="light"
                     border="success"
-                    style={{ width: '13.5rem', height:"250px"}}
+                    style={{ width: '13.5rem', height:"330px"}}
                     className="mb-2"
-                >
+                >   <Card.Header><img className="icon-pic" src={icon} alt="icon" height="60px" width="60px"/></Card.Header>
                     <Card.Body>
                         <Card.Title> Summer Set Dr Warrensburg, MO 64093 </Card.Title>
                         <Card.Text>
                             <p> {' '} </p>
 
-                            <small className="appointments-text"> available appointments next week </small>
+                            <small className="appointments-text">{' '} available appointments next week </small>
 
                         </Card.Text>
                         <Card.Footer>
                             <p> {' '} </p>
-                            <Button className="button-select-location" variant="primary">Select Location</Button>
+                            <Button className="button-select-location" variant="primary" onClick={routeChange}>Select Location</Button>
                         </Card.Footer>
 
                     </Card.Body>
@@ -41,20 +49,21 @@ function Location(){
                 <Card
                     bg="light"
                     border="success"
-                    style={{ width: '13.5rem', height:"250px", marginLeft:"20px"}}
+                    style={{ width: '13.5rem', height:"330px", marginLeft:"20px"}}
                     className="mb-2"
                 >
+                    <Card.Header><img className="icon-pic" src={icon} alt="icon" height="60px" width="60px"/></Card.Header>
                     <Card.Body>
                         <Card.Title> 505 Tractors pass Centerview, MO 64093 </Card.Title>
                         <Card.Text>
                             <p> {' '} </p>
 
-                            <small className="appointments-text"> available appointments next week </small>
+                            <small className="appointments-text"> {' '} available appointments next week </small>
 
                         </Card.Text>
                         <Card.Footer>
                             <p> {' '} </p>
-                            <Button className="button-select-location" variant="primary">Select Location</Button>
+                            <Button className="button-select-location" variant="primary" onClick={routeChange}>Select Location</Button>
                         </Card.Footer>
 
                     </Card.Body>

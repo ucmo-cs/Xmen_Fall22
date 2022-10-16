@@ -3,6 +3,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import {useState} from 'react';
 import TimesButtons from "../Components/TimesButtons";
+import Button from "react-bootstrap/Button";
 
 function Times(){
 
@@ -22,11 +23,13 @@ function Times(){
             {isShown && (
                 <div className="time-holder">
                     <h2>Select an available time: </h2>
+
                 </div>
             )}
 
-
-            {isShown && <TimesButtons />}
+            <div className="buttons-times">
+                {isShown && <TimesButtons />}
+            </div>
         </div>
     );
 }

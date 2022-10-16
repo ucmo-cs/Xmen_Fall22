@@ -50,6 +50,10 @@ function Confirm(){
                     </Card.Body>
                 </Card>
             </div>
+            <div className="confirm-button-holder">
+                <Button variant="success" >Confirm</Button>
+                <Button variant="danger" >Cancel</Button>
+            </div>
         </div>
     );
 }
