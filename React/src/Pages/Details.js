@@ -1,26 +1,45 @@
 import React, {useState} from "react";
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 function Details(){
+    const { state } = useLocation();
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
+    const [userId, setUserId] = useState('');
+
+    const place = state.state.place;
+    const time = state.passTime;
+    const services = state.state.state.passService;
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const user = {firstName, lastName, email, phone}
-
+        const appointment = {place, time}
         fetch('http://localhost:8080/jpa/users', {
             method: 'POST',
             headers:{"Content-Type" : "application/json"},
             body: JSON.stringify(user)
-        }).then(() => { console.log('new user added');
-        }).then(() => {routeChange()});
+        }).then((response) => response.json())
+            .then((response) => { setUserId(response.id) })
+            .then(() => { console.log("User created") })
+            .then(() => { console.log(userId) });
+
+        fetch('http://localhost:8080/users/' + {userId} + '/appointment', {
+            method: 'POST',
+            headers:{"Content-Type" : "application/json"},
+            body: JSON.stringify(appointment)
+        }).then(() => {console.log("Appointment created")})
+            .then(() => {routeChange()});
     }
+
+    console.log(state.state.state.passService);
+    console.log(state.state.place);
+    console.log(state.passTime);
 
     let navigate = useNavigate();
     const routeChange = () =>{

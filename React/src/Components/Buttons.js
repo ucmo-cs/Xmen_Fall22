@@ -1,51 +1,41 @@
-import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const Buttons = () => {
-    const [check, setcheck] = useState(false);
-    const [mort, setmort] = useState(false);
-    const [cc, setcc] = useState(false);
-    const [save, setsave] = useState(false);
-    const [student, setstudent] = useState(false);
-    const [retire, setretire] = useState(false);
-    const [invest, setinvest] = useState(false);
-    const [auto, setauto] = useState(false);
-    const [other, setother] = useState(false);
+const Buttons = ({ services, changeValue }) => {
 
-  return (
+    return (
     <div className="services-buttons-container">
       <div className="services-buttons">
-          <button onClick={() => setcheck(!check)} className={'toggle-btn ' + (check ? 'toggle-close':'')}>
+          <button onClick={() => changeValue(services[0].name)} className={'toggle-btn ' + (services[0].value ? 'toggle-close':'')}>
           Checking Account
           </button>
-          <button onClick={() => setmort(!mort)} className={'toggle-btn ' + (mort ? 'toggle-close':'')}>
+          <button onClick={() => changeValue(services[1].name)} className={'toggle-btn ' + (services[1].value ? 'toggle-close':'')}>
           Mortgage
           </button>
-          <button onClick={() => setcc(!cc)} className={'toggle-btn ' + (cc ? 'toggle-close':'')}>
+          <button onClick={() => changeValue(services[2].name)} className={'toggle-btn ' + (services[2].value ? 'toggle-close':'')}>
           Credit Card
           </button>
       </div>
 
         <div className="services-buttons">
-          <button onClick={() => setsave(!save)} className={'toggle-btn ' + (save ? 'toggle-close':'')}>
+          <button onClick={() => changeValue(services[3].name)} className={'toggle-btn ' + (services[3].value ? 'toggle-close':'')}>
             Savings Account
           </button>
-          <button onClick={() => setstudent(!student)} className={'toggle-btn ' + (student ? 'toggle-close':'')}>
+          <button onClick={() => changeValue(services[4].name)} className={'toggle-btn ' + (services[4].value ? 'toggle-close':'')}>
             Student Loans
           </button>
-          <button onClick={() => setretire(!retire)} className={'toggle-btn ' + (retire ? 'toggle-close':'')}>
+          <button onClick={() => changeValue(services[5].name)} className={'toggle-btn ' + (services[5].value ? 'toggle-close':'')}>
             Retirement
           </button>
         </div>
 
       <div className="services-buttons">
-        <button onClick={() => setinvest(!invest)} className={'toggle-btn ' + (invest ? 'toggle-close':'')}>
+        <button onClick={() => changeValue(services[6].name)} className={'toggle-btn ' + (services[6].value ? 'toggle-close':'')}>
           Investment Account
         </button>
-        <button onClick={() => setauto(!auto)} className={'toggle-btn ' + (auto ? 'toggle-close':'')}>
+        <button onClick={() => changeValue(services[7].name)} className={'toggle-btn ' + (services[7].value ? 'toggle-close':'')}>
           Auto Loans
         </button>
-        <button onClick={() => setother(!other)} className={'toggle-btn ' + (other ? 'toggle-close':'')}>
+        <button onClick={() => changeValue(services[8].name)} className={'toggle-btn ' + (services[8].value ? 'toggle-close':'')}>
           Other
         </button>
       </div>

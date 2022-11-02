@@ -3,15 +3,46 @@ import logo from "../Photos/commerce_photo.jpg";
 import Buttons from "../Components/Buttons";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-
-
+import { useState } from 'react';
 
 function Home(){
+
+    const [services, setServices] = useState([
+        { name: "check", value: false },
+        { name: "mort", value: false },
+        { name: "cc", value: false },
+        { name: "save", value: false },
+        { name: "student", value: false },
+        { name: "retire", value: false },
+        { name: "invest", value: false },
+        { name: "auto", value: false },
+        { name: "other", value: false },
+        { name: "Location", value: true },
+        { name: "Time", value: true }
+    ]);
+
+    const changeValue = (name) => {
+        const updatedServices = services.map(obj => {
+            if(obj.name === name && obj.value === false){
+                return {...obj, value: true};
+            }
+            else if(obj.name === name && obj.value === true) {
+                return {...obj, value: false};
+            }
+            return obj;
+        });
+        setServices(updatedServices);
+    }
+
     let navigate = useNavigate();
     const routeChange = () =>{
+        const passService = services.filter(service => service.value === true);
         let path = `location`;
-        navigate(path);
+        navigate(path, {
+            state: { passService }
+        });
     }
+
     return (
         <div className="home">
             <div className="home-header">
@@ -20,7 +51,7 @@ function Home(){
             </div>
 
             <div>
-                <Buttons />
+                <Buttons services={services} changeValue={changeValue}/>
             </div>
 
             <div className="home-comment-area">

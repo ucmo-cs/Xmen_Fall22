@@ -4,14 +4,19 @@ import Button from "react-bootstrap/Button";
 import map from "../Photos/Picture2.png";
 import Card from 'react-bootstrap/Card';
 import icon from "../Photos/LocationIcon.png";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 function Location(){
+    const { state } = useLocation();
+
 
     let navigate = useNavigate();
-    const routeChange = () =>{
+    const routeChange = (place) => {
+
         let path = `times`;
-        navigate(path);
+        navigate(path, {
+            state: { state, place }
+        });
     }
 
     const [searchField, setSearch] = useState("");
@@ -41,7 +46,7 @@ function Location(){
                         </Card.Text>
                         <Card.Footer>
                             <p> {' '} </p>
-                            <Button className="button-select-location" variant="primary" onClick={routeChange}>Select Location</Button>
+                            <Button className="button-select-location" variant="primary" onClick={() => routeChange("1")}>Select Location</Button>
                         </Card.Footer>
 
                     </Card.Body>
@@ -63,7 +68,7 @@ function Location(){
                         </Card.Text>
                         <Card.Footer>
                             <p> {' '} </p>
-                            <Button className="button-select-location" variant="primary" onClick={routeChange}>Select Location</Button>
+                            <Button className="button-select-location" variant="primary" onClick={() => routeChange("2")}>Select Location</Button>
                         </Card.Footer>
 
                     </Card.Body>
