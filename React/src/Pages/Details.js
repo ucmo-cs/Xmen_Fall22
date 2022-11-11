@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import {useLocation, useNavigate} from "react-router-dom";
@@ -11,35 +11,43 @@ function Details(){
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [userId, setUserId] = useState('');
+    let us2 = ''
 
-    const place = state.state.place;
-    const time = state.passTime;
+    const location = state.state.place;
+    const time = state.passTime[0].name;
     const services = state.state.state.passService;
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        let us1 = submitUser().then(() => submitAppointment()).then(() => routeChange())
+    }
+
+    async function submitUser(){
         const user = {firstName, lastName, email, phone}
-        const appointment = {place, time}
-        fetch('http://localhost:8080/jpa/users', {
+
+        let response = await fetch('http://localhost:8080/jpa/users', {
             method: 'POST',
             headers:{"Content-Type" : "application/json"},
             body: JSON.stringify(user)
-        }).then((response) => response.json())
-            .then((response) => { setUserId(response.id) })
-            .then(() => { console.log("User created") })
-            .then(() => { console.log(userId) });
+        });
+        let data = await response.json();
+        us2 = data.id;
 
-        fetch('http://localhost:8080/users/' + {userId} + '/appointment', {
+        console.log("User Created!");
+        console.log(us2);
+    }
+
+    async function submitAppointment(){
+        const appointment = {location, time}
+
+        await fetch('http://localhost:8080/users/' + us2 + '/appointment', {
             method: 'POST',
             headers:{"Content-Type" : "application/json"},
             body: JSON.stringify(appointment)
-        }).then(() => {console.log("Appointment created")})
-            .then(() => {routeChange()});
+        }).then(() => console.log("Appointment created"))
+            .then(() => console.log(us2));
     }
 
-    console.log(state.state.state.passService);
-    console.log(state.state.place);
-    console.log(state.passTime);
 
     let navigate = useNavigate();
     const routeChange = () =>{
