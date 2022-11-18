@@ -9,9 +9,8 @@ import Button from "react-bootstrap/Button";
 function Times(){
     const { state } = useLocation();
 
-    const [value, onChange] = useState(new Date());
+    const [date, onChange] = useState(new Date());
     const [isShown, setIsShown] = useState(false);
-
     const [times, setTimes] = useState([
         { name: "9:00", value: false },
         { name: "10:00", value: false },
@@ -44,7 +43,7 @@ function Times(){
         const passTime = times.filter(time => time.value === true);
         let path = `details`;
         navigate(path, {
-            state: { state, passTime }
+            state: { state, passTime, date }
         });
     }
 
@@ -53,7 +52,7 @@ function Times(){
 
             <h2 className="times-header">What date works best for you?</h2>
             <div className="calendar-holder">
-                <Calendar value={value} onChange={onChange} onClickDay={() => handleClick()} />
+                <Calendar value={date} onChange={onChange} onClickDay={() => handleClick()} />
             </div>
             {isShown && (
                 <div className="time-holder">

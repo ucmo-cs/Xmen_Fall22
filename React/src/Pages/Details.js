@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import {useLocation, useNavigate} from "react-router-dom";
@@ -10,16 +10,16 @@ function Details(){
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [userId, setUserId] = useState('');
     let us2 = ''
 
     const location = state.state.place;
     const time = state.passTime[0].name;
+    const date = state.date;
     const services = state.state.state.passService;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let us1 = submitUser().then(() => submitAppointment()).then(() => routeChange())
+        submitUser().then(() => submitAppointment()).then(() => routeChange())
     }
 
     async function submitUser(){
@@ -52,7 +52,9 @@ function Details(){
     let navigate = useNavigate();
     const routeChange = () =>{
         let path = `confirm`;
-        navigate(path);
+        navigate(path, {
+            state: { state, firstName, lastName }
+        });
     }
 
     return (
