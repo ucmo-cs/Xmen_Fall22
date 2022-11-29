@@ -9,7 +9,6 @@ import {useLocation, useNavigate} from "react-router-dom";
 function Location(){
     const { state } = useLocation();
 
-
     let navigate = useNavigate();
     const routeChange = (place) => {
 
@@ -19,13 +18,11 @@ function Location(){
         });
     }
 
-    const [searchField, setSearch] = useState("");
-
     return (
         <div className="location">
             <h2 className="location-header">Please pick one of our locations</h2>
             <div className="location-search">
-                <SearchBox placeholder="Search Location" handleChange={(e) => setSearch({searchField:e.target.value})}/>
+                <SearchBox placeholder="Search Location" />
                 <Button className="search-button" variant="primary">Search</Button>
             </div>
             <img className="location-map" src={map} alt="map"/>

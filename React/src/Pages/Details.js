@@ -12,10 +12,13 @@ function Details(){
     const [phone, setPhone] = useState('');
     let us2 = ''
 
+
     const location = state.state.place;
     const time = state.passTime[0].name;
-    const date = state.date;
+    const date1 = state.date;
     const services = state.state.state.passService;
+
+    console.log(date1);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -38,14 +41,15 @@ function Details(){
     }
 
     async function submitAppointment(){
-        const appointment = {location, time}
+        const date = date1;
+        const appointment = {location, time, date}
 
         await fetch('http://localhost:8080/users/' + us2 + '/appointment', {
             method: 'POST',
             headers:{"Content-Type" : "application/json"},
             body: JSON.stringify(appointment)
         }).then(() => console.log("Appointment created"))
-            .then(() => console.log(us2));
+            .then(() => console.log(us2)).then(() => console.log(date));
     }
 
 

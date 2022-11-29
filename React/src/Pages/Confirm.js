@@ -16,7 +16,7 @@ function Confirm(){
     const location = state.state.state.place;
     const time = state.state.passTime[0].name.toString();
     const services = state.state.state.state.passService;
-    const date = state.state.date.toLocaleDateString();
+    const date = state.state.date
     const fName = state.firstName;
     const lName = state.lastName;
 
@@ -49,8 +49,9 @@ function Confirm(){
                     <Card.Body>
                         <Card.Title> When: </Card.Title>
                         <Card.Text>
-                            <p> {date} </p>
-                            <p> {time} </p>
+                            <div className='card-div'>
+                                <p> {date}<br />{time} </p>
+                            </div>
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -63,7 +64,9 @@ function Confirm(){
                     <Card.Body>
                         <Card.Title> Where: </Card.Title>
                         <Card.Text>
-                            <p> {namedLocation} </p>
+                            <div className='card-div'>
+                                <p> {namedLocation} </p>
+                            </div>
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -76,7 +79,9 @@ function Confirm(){
                     <Card.Body>
                         <Card.Title> Services: </Card.Title>
                         <Card.Text>
-                            <p> {namedServices} </p>
+                            <div className='card-div'>
+                                <p> {namedServices} </p>
+                            </div>
                         </Card.Text>
                     </Card.Body>
                 </Card>

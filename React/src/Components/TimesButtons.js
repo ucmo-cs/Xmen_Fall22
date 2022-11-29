@@ -1,41 +1,33 @@
-import 'bootstrap/dist/css/bootstrap.css';
+import ToggleButton from "react-bootstrap/ToggleButton";
+import Button from "react-bootstrap/Button";
 
-const TimesButtons = ({times, changeValue}) => {
+const TimesButtons = ({radioValue, setRadioValue, radios}) => {
+    console.log(radios);
+    return(
 
-    return (
-        <div className="times-buttons-container">
+        <div className="newButtons-container">
+            { radios.map((radio, idx) => {
+                if(radio.avail === true)
+                    return <ToggleButton
+                        className={'radios'}
+                        key={idx}
+                        id={`radio-${idx}`}
+                        type="radio"
+                        variant="outline-dark"
+                        name="radio"
+                        value={radio.value}
+                        checked={radioValue === radio.value}
+                        onChange={(e) => setRadioValue(e.currentTarget.value)}
+                    >
+                        {radio.name}
+                    </ToggleButton>
+                else
+                    return <Button variant="secondary" className="radios" disabled> {radio.name} </Button>
 
-                <button onClick={() => changeValue(times[0].name)} className={'toggle-btn ' + (times[0].value ? 'toggle-close':'')}>
-                    9:00 AM
-                </button>
-                <button onClick={() => changeValue(times[1].name)} className={'toggle-btn ' + (times[1].value ? 'toggle-close':'')}>
-                    10:00 AM
-                </button>
-                <button onClick={() => changeValue(times[2].name)} className={'toggle-btn ' + (times[2].value ? 'toggle-close':'')}>
-                    11:00 AM
-                </button>
-
-                <button onClick={() => changeValue(times[3].name)} className={'toggle-btn ' + (times[3].value ? 'toggle-close':'')}>
-                    12:00 PM
-                </button>
-                <button onClick={() => changeValue(times[4].name)} className={'toggle-btn ' + (times[4].value ? 'toggle-close':'')}>
-                    1:00 PM
-                </button>
-                <button onClick={() => changeValue(times[5].name)} className={'toggle-btn ' + (times[5].value ? 'toggle-close':'')}>
-                    2:00 PM
-                </button>
-
-                <button onClick={() => changeValue(times[6].name)} className={'toggle-btn ' + (times[6].value ? 'toggle-close':'')}>
-                    3:00 PM
-                </button>
-                <button onClick={() => changeValue(times[7].name)} className={'toggle-btn ' + (times[7].value ? 'toggle-close':'')}>
-                    4:00 PM
-                </button>
-                <button className={'toggle-btn'}>
-                    .
-                </button>
+            })}
         </div>
-    );
+    )
 }
 
 export default TimesButtons;
+

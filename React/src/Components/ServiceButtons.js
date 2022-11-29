@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 
-const Buttons = ({ services, changeValue }) => {
+const ServiceButtons = ({ services, changeValue }) => {
 
     return (
     <div className="services-buttons-container">
@@ -45,4 +45,4 @@ const Buttons = ({ services, changeValue }) => {
   );
 }
 
-export default Buttons;
+export default ServiceButtons;

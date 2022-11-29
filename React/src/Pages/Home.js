@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../Photos/commerce_photo.jpg";
-import Buttons from "../Components/Buttons";
+import ServiceButtons from "../Components/ServiceButtons";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
@@ -8,17 +8,15 @@ import { useState } from 'react';
 function Home(){
 
     const [services, setServices] = useState([
-        { name: "check", value: false },
-        { name: "mort", value: false },
-        { name: "cc", value: false },
-        { name: "save", value: false },
-        { name: "student", value: false },
-        { name: "retire", value: false },
-        { name: "invest", value: false },
-        { name: "auto", value: false },
-        { name: "other", value: false },
-        { name: "Location", value: true },
-        { name: "Time", value: true }
+        { name: "Checking Account", value: false },
+        { name: "Mortgage", value: false },
+        { name: "Credit Card", value: false },
+        { name: "Savings Account", value: false },
+        { name: "Student Loans", value: false },
+        { name: "Retirement", value: false },
+        { name: "Investment Account", value: false },
+        { name: "Auto Loans", value: false },
+        { name: "Other", value: false }
     ]);
 
     const changeValue = (name) => {
@@ -51,7 +49,7 @@ function Home(){
             </div>
 
             <div>
-                <Buttons services={services} changeValue={changeValue}/>
+                <ServiceButtons services={services} changeValue={changeValue}/>
             </div>
 
             <div className="home-comment-area">

@@ -21,6 +21,7 @@ public class Appointment {
 
     private String location;
     private String time;
+    private String date;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

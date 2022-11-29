@@ -10,7 +10,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+
    <BrowserRouter>
        <Routes>
             <Route path="/" element={<App />} />
@@ -20,5 +20,5 @@ root.render(
             <Route path="location/times/details/confirm" element={<Confirm />} />
        </Routes>
    </BrowserRouter>
-  </React.StrictMode>
+
 );
