@@ -39,12 +39,16 @@ function Times(){
 
     let date = new Date().toLocaleDateString();
 
-
+    const [d1, setD1] = useState(date);
     const [theResponse, setResponse] = useState([]);
 
     useEffect(() => {
         getAppointments();
     },[]);
+
+    useEffect(() => {
+        console.log(d1)
+    },[d1]);
 
     useEffect(() => {
         console.log(r1);
@@ -88,13 +92,14 @@ function Times(){
         Object.keys(data).forEach(function(key) {
             arr.push(data[key])
         });
-
         setResponse(arr);
     }
 
     const handleClick = (value) => {
         date = value.toLocaleDateString();
+        console.log(date);
         curr = theResponse.filter(app => app.date === date);
+        setD1(date);
         changeAvailable();
         setIsShown(true);
     };
@@ -104,7 +109,7 @@ function Times(){
         const passTime = radios.filter(radio => radio.value === radioValue);
         let path = `details`;
         navigate(path, {
-            state: { state, passTime , date }
+            state: { state, passTime , d1 }
         });
     }
 

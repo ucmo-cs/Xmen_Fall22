@@ -15,7 +15,7 @@ function Details(){
 
     const location = state.state.place;
     const time = state.passTime[0].name;
-    const date1 = state.date;
+    const date1 = state.d1;
     const services = state.state.state.passService;
 
     console.log(date1);

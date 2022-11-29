@@ -8,7 +8,7 @@ function Confirm(){
     console.log(state.state.state.place);
     console.log(state.state.passTime[0]);
     console.log(state.state.state.state.passService);
-    console.log((state.state.date));
+    console.log((state.state.d1));
     console.log(state.firstName);
 
     let namedLocation = '';
@@ -16,7 +16,7 @@ function Confirm(){
     const location = state.state.state.place;
     const time = state.state.passTime[0].name.toString();
     const services = state.state.state.state.passService;
-    const date = state.state.date
+    const date = state.state.d1
     const fName = state.firstName;
     const lName = state.lastName;
 
